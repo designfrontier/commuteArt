@@ -1,0 +1,8 @@
+{
+  "name": "accelArt",
+  "description": "Accellerometer WArt Web Application",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+  }
+}
