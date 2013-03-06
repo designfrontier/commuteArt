@@ -1,8 +1,12 @@
 {
-  "name": "accelArt",
-  "description": "Accellerometer WArt Web Application",
+  "name": "application-name",
   "version": "0.0.1",
-  "private": false,
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
   "dependencies": {
+    "express": "3.1.0",
+    "ejs": "*"
   }
 }
