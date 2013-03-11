@@ -4,9 +4,13 @@ var commuteArt = {
 		vertical: ($(window).height() / 2)
 		, horizontal: ($(window).width() / 2)
 	}
+
 	, initializeCanvas: function(){
 		//append the canvas element to the DOM and size it
 		$('body').append('<canvas height="' + $(window).height() + '" width="' + $(window).width() + '" id="drawing"></canvas>');
+
+		//welcome to the world!
+		commuteArt.drawingSpace = document.getElementById('drawing').getContext('2d');
 	}
 
 	, hideIntro: function(){
@@ -49,9 +53,6 @@ var commuteArt = {
 $(function(){
 	//setup the space for the drawing to happen
 	commuteArt.initializeCanvas();
-
-	//welcome to the world!
-	commuteArt.drawingSpace = document.getElementById('drawing').getContext('2d');
 
 	//onDeviceMotion do some drawing
 	window.ondevicemotion = commuteArt.drawMotion;
