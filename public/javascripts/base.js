@@ -1,8 +1,16 @@
 var accelArt = {
 	drawingSpace: undefined
+	, center: {
+		vertical: ($(window).height() / 2)
+		, horizontal: ($(window).width() / 2)
+	}
 	, initializeCanvas: function(){
 		//append the canvas element to the DOM and size it
 		$('body').append('<canvas height="' + $(window).height() + '" width="' + $(window).width() + '" id="drawing"></canvas>');
+	}
+
+	, hideIntro: function(){
+		$('.heading').hide();
 	}
 };
 
@@ -12,20 +20,26 @@ $(function(){
 	//welcome to the world!
 	accelArt.drawingSpace = document.getElementById('drawing').getContext('2d');
 
+	setTimeout('accelArt.hideIntro()', 1000);
+
 	//set our begining spot as the middle of the screen
 
 	window.ondevicemotion = function(event) {
 		var ctx = accelArt.drawingSpace
-			, xPosition = event.acceleration.x * Math.floor((Math.random()*100)+10)
-			, yPosition = event.acceleration.y * Math.floor((Math.random()*100)+10)
-			, zPosition = event.accelerationIncludingGravity.z * Math.floor((Math.random()*50)+5);
+			, xPosition = event.accelerationIncludingGravity.x * 42
+			, yPosition = event.accelerationIncludingGravity.y * 42
+			, zPosition = event.accelerationIncludingGravity.z * 10;
 
-			ctx.beginPath();
-			ctx.moveTo(yPosition,zPosition);
-			ctx.arc(xPosition,yPosition,zPosition,0,Math.PI*2,true);
-			// ctx.lineTo(xPosition * zPosition, yPosition * (1.5 * zPosition));
-			// ctx.lineTo(yPosition - zPosition, xPosition * (-1 * zPosition));
-			// ctx.closePath();
-			ctx.fill();
+			//default so we have some visible dot no matter what
+			if(zPosition < 2){
+				zPosition = 2;
+			}
+
+			if(xPosition > 21 || yPosition > 21 || zPosition > 10){
+				ctx.beginPath();
+				ctx.fillStyle = 'rgba(0,0,0,0.3)';
+				ctx.arc(xPosition, yPosition, zPosition, 0, Math.PI*2, true);
+				ctx.fill();
+			}
 	}
 });
