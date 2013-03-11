@@ -1,5 +1,5 @@
 var commuteArt = {
-	drawingSpace: undefined
+	drawingSpace: ''
 	, center: {
 		vertical: ($(window).height() / 2)
 		, horizontal: ($(window).width() / 2)
@@ -10,7 +10,11 @@ var commuteArt = {
 	}
 
 	, hideIntro: function(){
-		$('.heading').hide();
+		var heading = $('.heading');
+
+		if(heading.attr('display') !== 'none'){
+			heading.hide();
+		}
 	}
 };
 
@@ -19,10 +23,6 @@ $(function(){
 
 	//welcome to the world!
 	commuteArt.drawingSpace = document.getElementById('drawing').getContext('2d');
-
-	setTimeout('commuteArt.hideIntro()', 1000);
-
-	//set our begining spot as the middle of the screen
 
 	window.ondevicemotion = function(event) {
 		var ctx = commuteArt.drawingSpace
@@ -36,6 +36,9 @@ $(function(){
 			}
 
 			if(xPosition > 21 || yPosition > 21 || zPosition > 10){
+				//hide the header
+				commuteArt.hideIntro();
+
 				ctx.beginPath();
 				ctx.fillStyle = 'rgba(0,0,0,0.3)';
 				ctx.arc(xPosition, yPosition, zPosition, 0, Math.PI*2, true);
