@@ -1,4 +1,4 @@
-var accelArt = {
+var commuteArt = {
 	drawingSpace: undefined
 	, center: {
 		vertical: ($(window).height() / 2)
@@ -15,17 +15,17 @@ var accelArt = {
 };
 
 $(function(){
-	accelArt.initializeCanvas();
+	commuteArt.initializeCanvas();
 
 	//welcome to the world!
-	accelArt.drawingSpace = document.getElementById('drawing').getContext('2d');
+	commuteArt.drawingSpace = document.getElementById('drawing').getContext('2d');
 
-	setTimeout('accelArt.hideIntro()', 1000);
+	setTimeout('commuteArt.hideIntro()', 1000);
 
 	//set our begining spot as the middle of the screen
 
 	window.ondevicemotion = function(event) {
-		var ctx = accelArt.drawingSpace
+		var ctx = commuteArt.drawingSpace
 			, xPosition = event.accelerationIncludingGravity.x * 42
 			, yPosition = event.accelerationIncludingGravity.y * 42
 			, zPosition = event.accelerationIncludingGravity.z * 10;
