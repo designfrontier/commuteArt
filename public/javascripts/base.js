@@ -38,7 +38,7 @@ var commuteArt = {
 		//check that we have crossed some threshold of amplitude
 		//	otherwise you end up with tons and tons of little dots
 		//	in the same place
-		if(xPosition > 21 || yPosition > 21 || zPosition > 10){
+		if(xPosition > 21 || yPosition > 21 || zPosition > 5){
 			//hide the header
 			commuteArt.hideIntro();
 
